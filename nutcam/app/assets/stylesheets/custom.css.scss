@@ -1,0 +1,78 @@
+@import "bootstrap";
+
+body {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    background-color: lightgray;
+    height: 100vh;
+    box-sizing: border-box;    
+    margin-bottom: 50px;
+}
+
+.navbar {
+    background-color: #000 !important;
+}
+
+.nav-link, #copyright {
+    color: white !important;
+}
+
+#logo {
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #EEE;
+}
+
+#jumbotron {
+    color: white;
+    background-position: center center;
+    background-repeat: no-repeat;              
+    background-size: cover;
+    height: 50vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: asset-url('rocks.jpeg');
+}
+
+.text-success {
+    text-decoration: none !important;
+}
+
+.card-body span {
+    text-decoration: none !important;
+}
+
+.edit-article {
+    background-color: darkcyan !important;
+}
+
+#jumbotron > * {
+    width: auto;
+}   
+
+#jumbotron-container {
+    align-items: center;
+    transition: all 0.3s ease;
+}
+  
+.container {
+    flex: 1 0 auto !important;  /* Flex grow, no shrink, auto basis */
+}
+  
+footer {
+    background-color: black;
+    height: 5vh;
+    flex-shrink: 0;  /* Prevents footer from shrinking */
+}
+
+#footer-links {
+    float: right;
+}
