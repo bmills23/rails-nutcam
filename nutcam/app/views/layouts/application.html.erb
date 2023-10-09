@@ -1,16 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Nutcam</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+<html>
+
+  <head>
+  <title>Nutcam</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
   </head>
 
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+
+  <div class="container-fluid">
+    <%= link_to "Roger's NutCam ", root_path, class: "navbar-brand", id: "logo"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <li><%= link_to 'Home Page', root_path, class: "nav-link active" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to 'Live Stream', live_path, class: "nav-link" %></li>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
   <body>
-    <%= yield %>
+    <div class="container main">
+      <%= yield %>
+    </div>
   </body>
+
+  <footer class="align-items-center fixed-bottom border-top">
+    
+    <div class='row'>
+
+      <p id='copyright' class="col-6">© 2023 Bryan & Steve</p>
+
+      <ul class="nav col-6 justify-content-end" id="footer-links">
+      </ul>
+
+    </div>
+  
+  </footer>
+
 </html>

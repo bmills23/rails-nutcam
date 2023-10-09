@@ -1,2 +1,73 @@
-<h1>Stream#live</h1>
-<p>Find me in app/views/stream/live.html.erb</p>
+<video id="localVideo" autoplay playsinline muted></video>
+<img id="image-element">
+
+<script>
+
+    const socket = new WebSocket('wss://[2601:285:500:2b00:fa35:5906:5cf3:9ebd]:8080');
+
+    socket.onopen = (event) => {
+        console.log('WebSocket connection opened:', event);
+    };
+
+    function convertBlobToImage(blob) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            // When the Blob data is loaded, create an image element
+            const imageElement = document.getElementById('image-element');
+            const data = event.target.result;
+
+            imageElement.src = data;
+
+            console.log(data)
+        };
+
+    // Read the Blob data, triggering the `onload` function when done
+    reader.readAsDataURL(blob);
+}
+
+    socket.onmessage = (event) => {
+
+        const imageElement = document.getElementById('image-element');
+
+        const blobData = event.data;
+
+        console.log(typeof blobData)
+
+        // Convert blobData to an image
+
+        convertBlobToImage(blobData);
+
+    };
+
+    socket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+    };
+
+    socket.onclose = (event) => {
+    if (event.wasClean) {
+        console.log('WebSocket connection closed cleanly:', event.reason);
+    } else {
+        console.error('WebSocket connection abruptly closed:', event.reason);
+    }
+    };    
+
+    // const videoPlayer = document.getElementById('localVideo');
+    // const eventSource = new EventSource('/live');
+
+    // eventSource.addEventListener('video_frame', (event) => {
+    //     const videoData = event.data;
+    //     // Append the received video data to the video element
+    //     videoPlayer.src = 'data:video/mp4;base64,' + btoa(videoData);
+    // });
+
+    // eventSource.onopen = (event) => {
+    //     console.log('SSE connection opened');
+    // };
+
+    // eventSource.onerror = (event) => {
+    //     console.error('SSE error:', event);
+    //     eventSource.close();
+    // };
+
+</script>

@@ -9,6 +9,7 @@ body {
 
 .main {
     background-color: lightgray;
+    width: 100vw; 
     height: 100vh;
     box-sizing: border-box;    
     margin-bottom: 50px;
@@ -75,4 +76,41 @@ footer {
 
 #footer-links {
     float: right;
+}
+
+#image-element {
+    width: 100%;
+}
+
+$size: 100px;
+
+.y, .x {
+  width: $size;
+  height: $size;
+}
+
+.x {
+    float: left;
+    animation: x 13s linear infinite alternate;
+}
+
+.y {
+    text-align: center;
+    background-image: asset-url('almond.png');
+    background-color: lightgray;
+    background-position: center;
+    background-size: cover;
+    animation: y 7s linear infinite alternate;
+}
+
+@keyframes x {
+  100% {
+    transform: translateX( calc(100vw - #{$size}) );
+  }
+}
+
+@keyframes y {
+  100% {
+    transform: translateY( calc(100vh - #{$size}) );
+  }
 }
